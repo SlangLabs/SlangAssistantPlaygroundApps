@@ -125,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialise assistant
         AssistantConfiguration config = new AssistantConfiguration.Builder()
-                .setAPIKey("742334ac406b43ae84dcae707cc5326a")
-                .setAssistantId("2510ead4ee754e879854248177538d66")
+                .setAPIKey("<API_KEY>")
+                .setAssistantId("<ASSISTANT_ID>")
                 .setDefaultLocale(SlangLocale.LOCALE_ENGLISH_IN)
                 .setEnvironment(SlangRetailAssistant.Environment.STAGING)
                 .setRequestedLocales(requestedLocales)
