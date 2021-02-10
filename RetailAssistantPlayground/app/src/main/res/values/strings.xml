@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RetailAssistantPlayground</string>
+    <string name="toggle_assistant_visibility">Toggle Assistant Visibility</string>
+    <string name="wtf">WTF</string>
+    <string name="results">Action Result</string>
+    <string name="action_results_default_text">Your action result will be shown here</string>
+</resources>

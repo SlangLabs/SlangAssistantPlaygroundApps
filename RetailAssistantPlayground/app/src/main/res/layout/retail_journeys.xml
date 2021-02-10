@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:text="@string/results"/>
+
+    <RelativeLayout
+        android:id="@+id/search_bar_layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/action_results"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/action_results"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="20dp"
+            android:paddingStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:gravity="start"
+            android:textSize="16sp"
+            android:background="@color/slang_lib_white"
+            android:textColor="@color/slang_lib_dark_gray"
+            android:scrollbars = "vertical"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/toggle_btn"
+        android:layout_margin="20dp"
+        android:width="200dp"
+        android:text="@string/toggle_assistant_visibility"
+        android:textSize="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--<in.slanglabs.assistants.accounting.SlangAccountingAssistantToggleButton-->
+    <!--app:active_voice_mode_img_src="@drawable/assistant_voice_on"-->
+    <!--app:inactive_voice_mode_img_src="@drawable/assistant_voice_off"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_width="75dp"-->
+    <!--android:layout_height="75dp"-->
+    <!--android:visibility="invisible"/>-->
+
+</LinearLayout>
