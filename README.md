@@ -1,2 +1,2 @@
 # SlangAssistantPlaygroundApps
-This repository coontains Slang assistant Playground apps to try and visualise how app could interact with various Slang Assistants.
+This repository contains the source for the playground apps for the various Slang Assistants created using Slang CONVA. These apps help visualise how apps from various domains could interact with the corresponding Slang Assistants.
