@@ -9,19 +9,11 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/search_journey"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Start Search Journey"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"/>
-
     <TextView
         android:id="@+id/progress_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Initialising, Please wait."
+        android:text="@string/initialising_please_wait"
         android:textStyle="bold"
         android:textSize="20dp"
         android:layout_marginLeft="50dp"
@@ -29,11 +21,12 @@
         android:gravity="center"/>
 
     <Button
-        android:id="@+id/order_journey"
+        android:id="@+id/play"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start Order Management Journey"
+        android:text="@string/play"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"/>
+
 
 </LinearLayout>

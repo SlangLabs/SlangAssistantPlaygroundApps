@@ -1,6 +1,7 @@
 package in.slanglabs.assistant.retail.playground;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -32,7 +33,7 @@ public class RetailJourneyActivity extends AppCompatActivity {
     private boolean mIsVisible = true;
     private TextView mResult;
     private static AlertDialog sCancelConfirmationDialog, sSelectOrderDialog;
-    private String mStartingJourney;
+    private Button mSearchJourney, mOrderJourney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class RetailJourneyActivity extends AppCompatActivity {
         setContentView(R.layout.retail_journeys);
 
         mIsVisible = true;
+        mSearchJourney = findViewById(R.id.search_journey);
+        mOrderJourney = findViewById(R.id.order_journey);
 
         //Using API to toggle assistant visibility.
         Button toggle = findViewById(R.id.toggle_btn);
@@ -62,12 +65,21 @@ public class RetailJourneyActivity extends AppCompatActivity {
 
         registerAssistantAction();
 
-        mStartingJourney = getIntent().getStringExtra("journey");
-        if (null != mStartingJourney && mStartingJourney.equalsIgnoreCase("order")) {
-            SlangRetailAssistant.startConversation(RetailUserJourney.ORDER_MANAGEMENT, this);
-        } else {
-            SlangRetailAssistant.startConversation(RetailUserJourney.SEARCH, this);
-        }
+        mSearchJourney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SlangRetailAssistant.startConversation(RetailUserJourney.SEARCH, RetailJourneyActivity.this);
+            }
+        });
+
+        mOrderJourney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SlangRetailAssistant.startConversation(RetailUserJourney.ORDER_MANAGEMENT, RetailJourneyActivity.this);
+            }
+        });
+
+        SlangRetailAssistant.getUI().showTrigger(this);
     }
 
     private void registerAssistantAction() {

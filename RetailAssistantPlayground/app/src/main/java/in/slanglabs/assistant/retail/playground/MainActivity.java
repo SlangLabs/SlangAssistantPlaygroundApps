@@ -23,45 +23,33 @@ import in.slanglabs.platform.SlangLocale;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "RetailPlayground";
     private static boolean sAssistantInitialised;
-    private Button mSearchJourney, mOrderJourney;
     private TextView mInitialising;
+    private Button mPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mSearchJourney = findViewById(R.id.search_journey);
-        mOrderJourney = findViewById(R.id.order_journey);
         mInitialising = findViewById(R.id.progress_text);
+        mPlay = findViewById(R.id.play);
 
         if (!sAssistantInitialised) {
-            mSearchJourney.setVisibility(View.INVISIBLE);
-            mOrderJourney.setVisibility(View.INVISIBLE);
             mInitialising.setVisibility(View.VISIBLE);
+            mPlay.setVisibility(View.INVISIBLE);
             initialiseRetailAssistant();
         } else {
-            mSearchJourney.setVisibility(View.VISIBLE);
-            mOrderJourney.setVisibility(View.VISIBLE);
-            mInitialising.setVisibility(View.INVISIBLE);
+            mPlay.setVisibility(View.VISIBLE);
+            Intent retailUserJourney = new Intent(MainActivity.this, RetailJourneyActivity.class);
+            startActivity(retailUserJourney);
         }
         SlangRetailAssistant.getUI().hideTrigger(this);
 
-        mSearchJourney.setOnClickListener(new View.OnClickListener() {
+        mPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent searchJourney = new Intent(MainActivity.this, RetailJourneyActivity.class);
-                searchJourney.putExtra("journey", "search");
-                MainActivity.this.startActivity(searchJourney);
-            }
-        });
-
-        mOrderJourney.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent orderJourney = new Intent(MainActivity.this, RetailJourneyActivity.class);
-                orderJourney.putExtra("journey", "order");
-                MainActivity.this.startActivity(orderJourney);
+                Intent retailUserJourney = new Intent(MainActivity.this, RetailJourneyActivity.class);
+                startActivity(retailUserJourney);
             }
         });
     }
@@ -70,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         SlangRetailAssistant.getUI().hideTrigger(this);
+        mPlay.setVisibility(sAssistantInitialised ? View.VISIBLE : View.INVISIBLE);
     }
 
     private void initialiseRetailAssistant() {
@@ -86,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
-                        mSearchJourney.setVisibility(View.VISIBLE);
-                        mOrderJourney.setVisibility(View.VISIBLE);
-                        mInitialising.setVisibility(View.INVISIBLE);
+                        Intent retailUserJourney = new Intent(MainActivity.this, RetailJourneyActivity.class);
+                        MainActivity.this.startActivity(retailUserJourney);
+                        mInitialising.setText("Initialised Successfully");
                     }
                 });
             }
@@ -96,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAssistantInitFailure(String description) {
                 Log.e(TAG, "onAssistantInitFailure:" + description);
+                mInitialising.setText("Initialisation Failed:" + description);
             }
 
             @Override
@@ -128,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
                 .setAPIKey("<API_KEY>")
                 .setAssistantId("<ASSISTANT_ID>")
                 .setDefaultLocale(SlangLocale.LOCALE_ENGLISH_IN)
-                .setEnvironment(SlangRetailAssistant.Environment.STAGING)
                 .setRequestedLocales(requestedLocales)
                 .build();
         SlangRetailAssistant.initialize(this, config);

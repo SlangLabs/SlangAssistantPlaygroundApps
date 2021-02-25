@@ -10,8 +10,27 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/search_journey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start_search_journey"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/order_journey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start_order_management_journey"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textAllCaps="false"/>
+
     <TextView
         android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_height="wrap_content"
@@ -51,7 +70,8 @@
         android:text="@string/toggle_assistant_visibility"
         android:textSize="18dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"/>
 
     <!--<in.slanglabs.assistants.accounting.SlangAccountingAssistantToggleButton-->
     <!--app:active_voice_mode_img_src="@drawable/assistant_voice_on"-->

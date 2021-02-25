@@ -4,4 +4,8 @@
     <string name="wtf">WTF</string>
     <string name="results">Action Result</string>
     <string name="action_results_default_text">Your action result will be shown here</string>
+    <string name="start_search_journey">Start Search Journey (API)</string>
+    <string name="start_order_management_journey">Start Order Management Journey (API)</string>
+    <string name="initialising_please_wait">Initialising, Please wait.</string>
+    <string name="play">Play</string>
 </resources>
